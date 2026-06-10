@@ -4,57 +4,392 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análise de Perfil do Investidor</title>
-    <link rel="stylesheet" href="./source/style.css">
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0284c7;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-profiles,
+        .quiz-container,
+        .result-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,.1);
+            margin-bottom: 2rem;
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .profile-card {
+            border-top: 5px solid var(--secondary);
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 6px;
+        }
+
+        .profile-card.conservador {
+            border-color: #64748b;
+        }
+
+        .profile-card.moderado {
+            border-color: #3b82f6;
+        }
+
+        .profile-card.arrojado {
+            border-color: #8b5cf6;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1.5rem;
+        }
+
+        .question:last-of-type {
+            border-bottom: none;
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options-list li {
+            margin-bottom: .8rem;
+        }
+
+        label {
+            display: block;
+            padding: 1rem;
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        label:hover {
+            background: #e2e8f0;
+            border-color: var(--secondary);
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.1);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .result-box {
+            display: none;
+            text-align: center;
+            border: 3px solid var(--success);
+            background: #f0fdf4;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            color: var(--success);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .desc-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+    </style>
 </head>
 <body>
 
-<section class="hero">
-    <div class="container">
+<header>
+    <h1>Análise de Perfil do Investidor</h1>
+    <p>Descubra sua tolerância ao risco e encontre a melhor estratégia para o seu dinheiro</p>
+</header>
 
-        <h1>Análise de Perfil do Investidor</h1>
+<div class="container">
 
-        <p class="subtitle">
-            Descubra qual é o seu perfil de investidor e receba orientações
-            mais adequadas ao seu nível de tolerância ao risco, objetivos
-            financeiros e horizonte de investimento.
+    <!-- PERFIS -->
+    <section class="section-profiles">
+        <h2>Os Três Perfis de Investidor</h2>
+        <p>
+            Conhecer seu perfil ajuda a escolher investimentos alinhados com seus objetivos
+            e sua tolerância ao risco.
         </p>
 
-        <div class="benefits">
-            <div class="card">
-                <h3>Conheça seu Perfil</h3>
+        <div class="profiles-grid">
+
+            <div class="profile-card conservador">
+                <h3>Conservador</h3>
                 <p>
-                    Identifique se você possui perfil conservador,
-                    moderado ou arrojado.
+                    Prioriza a segurança do patrimônio e evita oscilações.
+                    Prefere aplicações de renda fixa e alta previsibilidade.
                 </p>
             </div>
 
-            <div class="card">
-                <h3>Avalie sua Tolerância ao Risco</h3>
+            <div class="profile-card moderado">
+                <h3>Moderado</h3>
                 <p>
-                    Entenda como você reage às oscilações do mercado
-                    e aos diferentes tipos de investimento.
+                    Busca equilíbrio entre segurança e rentabilidade.
+                    Aceita riscos controlados para aumentar os ganhos.
                 </p>
             </div>
 
-            <div class="card">
-                <h3>Invista com Mais Segurança</h3>
+            <div class="profile-card arrojado">
+                <h3>Arrojado</h3>
                 <p>
-                    Receba uma análise que auxilia na tomada de decisões
-                    alinhadas aos seus objetivos financeiros.
+                    Focado em crescimento patrimonial no longo prazo.
+                    Tolera oscilações maiores em busca de retornos superiores.
                 </p>
             </div>
+
         </div>
+    </section>
 
-        <a href="https://www.somaurbanismo.com.br/perfil-de-investidor/" class="cta-button">
-            Descobrir Meu Perfil
-        </a>
+    <!-- QUIZ -->
+    <section class="quiz-container" id="quiz-section">
 
-        <p class="footer-text">
-            O teste leva apenas alguns minutos para ser concluído.
-        </p>
+        <h2>Descubra seu Perfil</h2>
+        <p>Responda todas as perguntas:</p>
 
-    </div>
-</section>
+        <form id="api-form">
+
+            <div class="question">
+                <h3>1. Qual é seu principal objetivo ao investir?</h3>
+
+                <ul class="options-list">
+                    <li>
+                        <label>
+                            <input type="radio" name="q1" value="1" required>
+                            Preservar meu patrimônio e evitar perdas.
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="q1" value="2">
+                            Crescer meu patrimônio com riscos moderados.
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="q1" value="3">
+                            Maximizar ganhos no longo prazo.
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>2. Se seu investimento caísse 15% em um mês:</h3>
+
+                <ul class="options-list">
+                    <li>
+                        <label>
+                            <input type="radio" name="q2" value="1" required>
+                            Resgataria imediatamente.
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="q2" value="2">
+                            Aguardaria a recuperação.
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="q2" value="3">
+                            Investiria mais aproveitando a queda.
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>3. Por quanto tempo pretende manter seus investimentos?</h3>
+
+                <ul class="options-list">
+                    <li>
+                        <label>
+                            <input type="radio" name="q3" value="1" required>
+                            Menos de 1 ano.
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="q3" value="2">
+                            Entre 1 e 5 anos.
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="q3" value="3">
+                            Mais de 5 anos.
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <button type="submit" class="btn">
+                Finalizar e Ver Meu Perfil
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- RESULTADO -->
+    <section class="result-box" id="result-area">
+
+        <h2>Seu Perfil de Investidor é:</h2>
+
+        <div class="result-title" id="profile-output"></div>
+
+        <p class="desc-text" id="profile-desc-output"></p>
+
+        <button
+            class="btn"
+            style="background:#1e293b;"
+            onclick="resetQuiz()">
+            Refazer Teste
+        </button>
+
+    </section>
+
+</div>
+
+<script>
+
+document.getElementById('api-form').addEventListener('submit', function(event) {
+
+    event.preventDefault();
+
+    const q1 = parseInt(document.querySelector('input[name="q1"]:checked').value);
+    const q2 = parseInt(document.querySelector('input[name="q2"]:checked').value);
+    const q3 = parseInt(document.querySelector('input[name="q3"]:checked').value);
+
+    const totalScore = q1 + q2 + q3;
+
+    let profile = "";
+    let description = "";
+
+    if (totalScore <= 4) {
+
+        profile = "CONSERVADOR";
+
+        description =
+            "Você prioriza segurança, previsibilidade e proteção do patrimônio. Investimentos de renda fixa costumam se adequar melhor ao seu perfil.";
+
+    } else if (totalScore <= 7) {
+
+        profile = "MODERADO";
+
+        description =
+            "Você busca equilíbrio entre segurança e rentabilidade. Aceita riscos moderados para alcançar retornos superiores no médio e longo prazo.";
+
+    } else {
+
+        profile = "ARROJADO";
+
+        description =
+            "Você possui alta tolerância ao risco e foco em crescimento patrimonial no longo prazo. Oscilações fazem parte da sua estratégia para buscar maiores retornos.";
+
+    }
+
+    document.getElementById("profile-output").textContent = profile;
+    document.getElementById("profile-desc-output").textContent = description;
+
+    document.getElementById("quiz-section").style.display = "none";
+    document.getElementById("result-area").style.display = "block";
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+
+});
+
+function resetQuiz() {
+
+    document.getElementById("api-form").reset();
+
+    document.getElementById("result-area").style.display = "none";
+    document.getElementById("quiz-section").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+</script>
 
 </body>
 </html>
